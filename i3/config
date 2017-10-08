@@ -157,5 +157,16 @@ exec --no-startup-id pasystray  # Audio control
 exec_always xrandr --output eDP-1-1 --mode 1920x1080
 exec_always xrandr --output DP-1-2 --left-of eDP-1-1
 
+workspace 1 output DP-1-2
+workspace 2 output DP-1-2
+workspace 3 output DP-1-2
+workspace 4 output DP-1-2
+workspace 5 output DP-1-2
+workspace 6 output eDP-1-1
+workspace 7 output eDP-1-1
+workspace 8 output eDP-1-1
+workspace 9 output eDP-1-1
+workspace 10 output eDP-1-1
+
 # Start gnome settings daemon, which helps set properly scaled fonts. Without it, UI elements such as window menus+titles are massive on my T470p.
 exec /usr/bin/unity-settings-daemon
