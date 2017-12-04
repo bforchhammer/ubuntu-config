@@ -150,7 +150,7 @@ bar {
 }
 
 exec ~/.dropbox-dist/dropboxd
-exec --no-startup-id nm-applet  # Network manager
+exec_always --no-startup-id killall nm-applet; nohup nm-applet # Network manager
 exec --no-startup-id pasystray  # Audio control
 
 # Default setup: 2 screens, external DP-1-2 left of internal eDP-1-1
