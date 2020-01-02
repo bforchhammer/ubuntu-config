@@ -134,7 +134,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
     bindsym r exec --no-startup-id ~/.config/i3/i3exit reboot, mode "default"
     bindsym u exec --no-startup-id ~/.config/i3/i3exit switch, mode "default"
-    bindsym Shift+s exec --no-startup-id ~/.config/i3i3exit shutdown, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.config/i3/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -146,27 +146,33 @@ bindsym $mod+x mode "$mode_system"
 # finds out, if available)
 bar {
 	position top
-        status_command i3status
+	status_command i3status
 }
+
+exec --no-startup-id xsetroot -solid "#2857a3"
 
 exec ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id killall nm-applet; nohup nm-applet # Network manager
 exec --no-startup-id pasystray  # Audio control
 
 # Default setup: 2 screens, external DP-1-2 left of internal eDP-1-1
-exec_always xrandr --output eDP-1-1 --mode 1920x1080
-exec_always xrandr --output DP-1-2 --left-of eDP-1-1
+exec_always xrandr --output eDP-1 --mode 1920x1080 --output DP-2 --auto --left-of eDP-1
+exec_always xrandr --output eDP-1 --mode 1920x1080 --output HDMI-1 --auto --left-of eDP-1
 
-workspace 1 output DP-1-2
-workspace 2 output DP-1-2
-workspace 3 output DP-1-2
-workspace 4 output DP-1-2
-workspace 5 output DP-1-2
-workspace 6 output eDP-1-1
-workspace 7 output eDP-1-1
-workspace 8 output eDP-1-1
-workspace 9 output eDP-1-1
-workspace 10 output eDP-1-1
+workspace 1 output HDMI-1
+workspace 2 output HDMI-1
+workspace 3 output HDMI-1
+workspace 4 output HDMI-1
+workspace 5 output HDMI-1
 
-# Start gnome settings daemon, which helps set properly scaled fonts. Without it, UI elements such as window menus+titles are massive on my T470p.
-exec /usr/bin/unity-settings-daemon
+#workspace 1 output DP-2
+#workspace 2 output DP-2
+#workspace 3 output DP-2
+#workspace 4 output DP-2
+#workspace 5 output DP-2
+
+workspace 6 output eDP-1
+workspace 7 output eDP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+workspace 10 output eDP-1
